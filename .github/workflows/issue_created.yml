@@ -29,10 +29,6 @@ jobs:
             "ticket": {
               "subject":   "Github_Issue: $ISSUE_TITLE",
               "comment":   { "body": "[GITHUB_ISSUE_COMMENT]\n\n${body:1:-1}" },
-              "assignee_id": 383200172360,
-              "group_id": 360008131599,
-              "brand_id": 360002503940,
-              "tags": ["phrase"],
               "external_id": "$ISSUE_URL",
               "requester": { "locale_id": 1, "name": "$ISSUE_USER from Github", "email": "$ISSUE_USER@users.noreply.github.com" }
             }
