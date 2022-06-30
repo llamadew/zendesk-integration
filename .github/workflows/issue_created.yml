@@ -7,6 +7,7 @@ on:
       ZENDESK_BASIC_AUTH:
         description: 'The zendesk basic auth token for authentification. See https://support.zendesk.com/hc/en-us/articles/115000510267-How-can-I-authenticate-API-requests-#heading2'
         required: true
+        
 jobs:
   issue_created:
     name: Issue created
@@ -23,7 +24,7 @@ jobs:
           body=$(jq -n --arg body "$ISSUE_BODY" '{body: $body}' | jq .body)
           echo "$body"
 
-          curl -X POST https://${{ secrets.ZENDESK_DOMAIN }}.zendesk.com/api/v2/tickets -H "Authorization: Basic $ZENDESK_BASIC_AUTH" -H "Content-Type: application/json" --data-binary @- <<DATA
+          curl -X POST https://cometchat.zendesk.com/api/v2/tickets -H "Authorization: Basic $ZENDESK_BASIC_AUTH" -H "Content-Type: application/json" --data-binary @- <<DATA
           {
             "ticket": {
               "subject":   "Github_Issue: $ISSUE_TITLE",
