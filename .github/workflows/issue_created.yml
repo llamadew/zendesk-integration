@@ -23,7 +23,7 @@ jobs:
           body=$(jq -n --arg body "$ISSUE_BODY" '{body: $body}' | jq .body)
           echo "$body"
 
-          curl -X POST https://memsource.zendesk.com/api/v2/tickets -H "Authorization: Basic $ZENDESK_BASIC_AUTH" -H "Content-Type: application/json" --data-binary @- <<DATA
+          curl -X POST https://${{ secrets.ZENDESK_DOMAIN }}.zendesk.com/api/v2/tickets -H "Authorization: Basic $ZENDESK_BASIC_AUTH" -H "Content-Type: application/json" --data-binary @- <<DATA
           {
             "ticket": {
               "subject":   "Github_Issue: $ISSUE_TITLE",
